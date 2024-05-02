@@ -1,0 +1,19 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    parallel:
+        jobSize: 8
+        maximumNumberOfProcesses: 64
+        minimumNumberOfJobsPerProcess: 16
+
+    level: 9
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    paths:
+        - src/App
+
+    ignoreErrors:
+        - '#Unsafe usage of new static#'
+        - '#Method .*\\RozetkaPayConnector::.* should return .* but returns mixed.#'
+

@@ -1,0 +1,99 @@
+<?php
+/**
+ * Description of CreatePaymentDTO.php
+ * @copyright Copyright (c) DOTSPLATFORM, LLC
+ * @author    Oleksandr Polosmak <o.polosmak@dotsplatform.com>
+ */
+
+namespace Dots\Tranzzo\App\Client\Requests\Payments\DTO;
+
+use Dots\Data\DTO;
+use Dots\Tranzzo\App\Client\Resources\Consts\CurrencyCode;
+use Dots\Tranzzo\App\Client\Resources\Consts\Order3DSBypass;
+use Dots\Tranzzo\App\Client\Resources\Consts\PaymentMethod;
+use Dots\Tranzzo\App\Client\Resources\Consts\PaymentMode;
+
+class CreateHostedPaymentRequestDTO extends DTO
+{
+    protected string $pos_id;
+
+    protected PaymentMode $mode;
+
+    protected PaymentMethod $method;
+
+    protected int $amount;
+
+    protected CurrencyCode $currency;
+
+    protected ?string $description;
+    protected string $order_id;
+    protected ?string $server_url;
+
+    protected ?string $result_url;
+
+    protected Order3DSBypass $order_3ds_bypass;
+
+    protected ?string $payload;
+
+    protected ?string $customer_referrer;
+
+    public function getPosId(): string
+    {
+        return $this->pos_id;
+    }
+
+    public function getMode(): PaymentMode
+    {
+        return $this->mode;
+    }
+
+    public function getMethod(): PaymentMethod
+    {
+        return $this->method;
+    }
+
+    public function getAmount(): int
+    {
+        return $this->amount;
+    }
+
+    public function getCurrency(): CurrencyCode
+    {
+        return $this->currency;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function getOrderId(): string
+    {
+        return $this->order_id;
+    }
+
+    public function getServerUrl(): ?string
+    {
+        return $this->server_url;
+    }
+
+    public function getResultUrl(): ?string
+    {
+        return $this->result_url;
+    }
+
+    public function getOrder3dsBypass(): Order3DSBypass
+    {
+        return $this->order_3ds_bypass;
+    }
+
+    public function getPayload(): ?string
+    {
+        return $this->payload;
+    }
+
+    public function getCustomerReferrer(): ?string
+    {
+        return $this->customer_referrer;
+    }
+}
