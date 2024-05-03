@@ -8,22 +8,36 @@
 namespace Dots\Tranzzo\App\Client\Requests\Payments\DTO;
 
 use Dots\Data\DTO;
-use Dots\Tranzzo\App\Client\Resources\Consts\CurrencyCode;
+use Dots\Tranzzo\App\Client\Resources\Consts\Currency;
 use Dots\Tranzzo\App\Client\Resources\Split\SplitMerchants;
 
 class SplitCapturePaymentRequestDTO extends DTO
 {
     protected string $pos_id;
+
     protected string $order_id;
 
     protected ?int $charge_amount;
 
-    protected ?CurrencyCode $currency;
+    protected ?Currency $currency;
 
     protected ?string $comment;
+
     protected ?string $server_url;
 
     protected SplitMerchants $split;
+
+    public function toRequestData(bool $stageEnv): array
+    {
+        $data = $this->toArray();
+        if (! $stageEnv) {
+            return $data;
+        }
+
+        $data['currency'] = Currency::XTS->value;
+
+        return $data;
+    }
 
     public function getPosId(): string
     {
@@ -40,7 +54,7 @@ class SplitCapturePaymentRequestDTO extends DTO
         return $this->charge_amount;
     }
 
-    public function getCurrency(): ?CurrencyCode
+    public function getCurrency(): ?Currency
     {
         return $this->currency;
     }
@@ -59,5 +73,4 @@ class SplitCapturePaymentRequestDTO extends DTO
     {
         return $this->split;
     }
-
 }

@@ -18,12 +18,13 @@ class VoidPaymentRequest extends PostTranzzoRequest
 
     public function __construct(
         private readonly VoidPaymentRequestDTO $dto,
+        private readonly bool $stageEnv,
     ) {
     }
 
     protected function defaultBody(): array
     {
-        return $this->dto->toArray();
+        return $this->dto->toRequestData($this->stageEnv);
     }
 
     public function resolveEndpoint(): string

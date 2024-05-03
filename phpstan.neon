@@ -15,5 +15,5 @@ parameters:
 
     ignoreErrors:
         - '#Unsafe usage of new static#'
-        - '#Method .*\\RozetkaPayConnector::.* should return .* but returns mixed.#'
+        - '#Method .*\\TranzzoConnector::.* should return .* but returns mixed.#'
 

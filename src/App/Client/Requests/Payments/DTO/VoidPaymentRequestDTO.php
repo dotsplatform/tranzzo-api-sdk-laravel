@@ -8,17 +8,31 @@
 namespace Dots\Tranzzo\App\Client\Requests\Payments\DTO;
 
 use Dots\Data\DTO;
-use Dots\Tranzzo\App\Client\Resources\Consts\CurrencyCode;
+use Dots\Tranzzo\App\Client\Resources\Consts\Currency;
 
 class VoidPaymentRequestDTO extends DTO
 {
     protected string $pos_id;
+
     protected string $order_id;
 
-    protected ?CurrencyCode $currency;
+    protected ?Currency $currency;
 
     protected ?string $comment;
+
     protected ?string $server_url;
+
+    public function toRequestData(bool $stageEnv): array
+    {
+        $data = $this->toArray();
+        if (! $stageEnv) {
+            return $data;
+        }
+
+        $data['currency'] = Currency::XTS->value;
+
+        return $data;
+    }
 
     public function getPosId(): string
     {
@@ -30,7 +44,7 @@ class VoidPaymentRequestDTO extends DTO
         return $this->order_id;
     }
 
-    public function getCurrency(): ?CurrencyCode
+    public function getCurrency(): ?Currency
     {
         return $this->currency;
     }
@@ -44,6 +58,4 @@ class VoidPaymentRequestDTO extends DTO
     {
         return $this->server_url;
     }
-
-
 }

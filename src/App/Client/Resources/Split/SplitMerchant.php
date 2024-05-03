@@ -7,12 +7,11 @@
 
 namespace Dots\Tranzzo\App\Client\Resources\Split;
 
-
 use Dots\Data\DTO;
 
 class SplitMerchant extends DTO
 {
     protected string $id;
-    protected int $amount;
 
+    protected int $amount;
 }

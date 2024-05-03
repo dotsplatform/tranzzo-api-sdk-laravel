@@ -8,7 +8,7 @@
 namespace Dots\Tranzzo\App\Client\Requests\Payments\DTO;
 
 use Dots\Data\DTO;
-use Dots\Tranzzo\App\Client\Resources\Consts\CurrencyCode;
+use Dots\Tranzzo\App\Client\Resources\Consts\Currency;
 use Dots\Tranzzo\App\Client\Resources\Consts\Order3DSBypass;
 use Dots\Tranzzo\App\Client\Resources\Consts\PaymentMethod;
 use Dots\Tranzzo\App\Client\Resources\Consts\PaymentMode;
@@ -23,10 +23,12 @@ class CreateHostedPaymentRequestDTO extends DTO
 
     protected int $amount;
 
-    protected CurrencyCode $currency;
+    protected Currency $currency;
 
     protected ?string $description;
+
     protected string $order_id;
+
     protected ?string $server_url;
 
     protected ?string $result_url;
@@ -36,6 +38,18 @@ class CreateHostedPaymentRequestDTO extends DTO
     protected ?string $payload;
 
     protected ?string $customer_referrer;
+
+    public function toRequestData(bool $stageEnv): array
+    {
+        $data = $this->toArray();
+        if (! $stageEnv) {
+            return $data;
+        }
+
+        $data['currency'] = Currency::XTS->value;
+
+        return $data;
+    }
 
     public function getPosId(): string
     {
@@ -57,7 +71,7 @@ class CreateHostedPaymentRequestDTO extends DTO
         return $this->amount;
     }
 
-    public function getCurrency(): CurrencyCode
+    public function getCurrency(): Currency
     {
         return $this->currency;
     }

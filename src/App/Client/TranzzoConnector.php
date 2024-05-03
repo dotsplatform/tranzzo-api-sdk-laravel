@@ -10,12 +10,13 @@ namespace Dots\Tranzzo\App\Client;
 use Dots\Tranzzo\App\Client\Auth\DTO\TranzzoAuthDTO;
 use Dots\Tranzzo\App\Client\Auth\TranzzoAuthenticator;
 use Dots\Tranzzo\App\Client\Exceptions\TranzzoException;
-use Dots\Tranzzo\App\Client\Requests\Payments\VoidPaymentRequest;
-use Dots\Tranzzo\App\Client\Requests\Payments\SplitCapturePaymentRequest;
 use Dots\Tranzzo\App\Client\Requests\Payments\CreateHostedPaymentRequest;
-use Dots\Tranzzo\App\Client\Requests\Payments\DTO\VoidPaymentRequestDTO;
-use Dots\Tranzzo\App\Client\Requests\Payments\DTO\SplitCapturePaymentRequestDTO;
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\CreateHostedPaymentRequestDTO;
+use Dots\Tranzzo\App\Client\Requests\Payments\DTO\SplitCapturePaymentRequestDTO;
+use Dots\Tranzzo\App\Client\Requests\Payments\DTO\VoidPaymentRequestDTO;
+use Dots\Tranzzo\App\Client\Requests\Payments\SplitCapturePaymentRequest;
+use Dots\Tranzzo\App\Client\Requests\Payments\VoidPaymentRequest;
+use Dots\Tranzzo\App\Client\Resources\Operation;
 use Dots\Tranzzo\App\Client\Responses\CreateHostedPaymentResponseDTO;
 use Dots\Tranzzo\App\Client\Responses\ErrorResponseDTO;
 use RuntimeException;
@@ -30,6 +31,7 @@ class TranzzoConnector extends Connector
 
     public function __construct(
         private readonly TranzzoAuthDTO $authDto,
+        private readonly bool $stageEnv,
     ) {
     }
 
@@ -40,7 +42,7 @@ class TranzzoConnector extends Connector
     {
         $this->authenticateRequests();
 
-        return $this->send(new CreateHostedPaymentRequest($dto))->dto();
+        return $this->send(new CreateHostedPaymentRequest($dto, $this->stageEnv))->dto();
     }
 
     /**
@@ -50,7 +52,7 @@ class TranzzoConnector extends Connector
     {
         $this->authenticateRequests();
 
-        return $this->send(new SplitCapturePaymentRequest($dto))->dto();
+        return $this->send(new SplitCapturePaymentRequest($dto, $this->stageEnv))->dto();
     }
 
     /**
@@ -60,7 +62,7 @@ class TranzzoConnector extends Connector
     {
         $this->authenticateRequests();
 
-        return $this->send(new VoidPaymentRequest($dto))->dto();
+        return $this->send(new VoidPaymentRequest($dto, $this->stageEnv))->dto();
     }
 
     protected function defaultHeaders(): array

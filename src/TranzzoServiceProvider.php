@@ -9,23 +9,20 @@ namespace Dots\Tranzzo;
 
 use Illuminate\Support\ServiceProvider;
 
-
-
 class TranzzoServiceProvider extends ServiceProvider
 {
-
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/rozetka-pay.php',
-            'rozetka-pay'
+            __DIR__.'/../config/tranzzo.php',
+            'tranzzo'
         );
     }
 
     public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/rozetka-pay.php' => config_path('rozetka-pay.php'),
+            __DIR__.'/../config/tranzzo.php' => config_path('tranzzo.php'),
         ], 'config');
     }
 }

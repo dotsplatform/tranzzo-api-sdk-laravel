@@ -12,8 +12,11 @@ use Dots\Data\DTO;
 class TranzzoAuthDTO extends DTO
 {
     protected string $posId;
+
     protected string $endpointKey;
+
     protected string $apiKey;
+
     protected string $apiSecret;
 
     public function getPosId(): string
@@ -35,6 +38,4 @@ class TranzzoAuthDTO extends DTO
     {
         return $this->apiSecret;
     }
-
-
 }

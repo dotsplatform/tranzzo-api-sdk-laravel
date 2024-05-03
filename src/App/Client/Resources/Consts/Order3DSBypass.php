@@ -7,7 +7,6 @@
 
 namespace Dots\Tranzzo\App\Client\Resources\Consts;
 
-
 enum Order3DSBypass: string
 {
     case ALWAYS = 'always';
