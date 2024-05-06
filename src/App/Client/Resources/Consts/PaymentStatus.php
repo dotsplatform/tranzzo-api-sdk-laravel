@@ -13,4 +13,24 @@ enum PaymentStatus: string
     case PENDING = 'pending';
     case SUCCESS = 'success';
     case FAILURE = 'failure';
+
+    public function isSuccess(): bool
+    {
+        return $this === self::SUCCESS;
+    }
+
+    public function isFailure(): bool
+    {
+        return $this === self::FAILURE;
+    }
+
+    public function isPending(): bool
+    {
+        return $this === self::PENDING;
+    }
+
+    public function isInit(): bool
+    {
+        return $this === self::INIT;
+    }
 }

@@ -126,4 +126,24 @@ class Operation extends Entity
     {
         return $this->comment;
     }
+
+    public function isStatusSuccess(): bool
+    {
+        return $this->status->isSuccess();
+    }
+
+    public function isStatusFailure(): bool
+    {
+        return $this->status->isFailure();
+    }
+
+    public function isStatusPending(): bool
+    {
+        return $this->status->isPending();
+    }
+
+    public function isStatusInit(): bool
+    {
+        return $this->status->isInit();
+    }
 }

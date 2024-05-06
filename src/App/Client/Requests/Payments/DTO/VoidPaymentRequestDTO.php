@@ -16,7 +16,7 @@ class VoidPaymentRequestDTO extends DTO
 
     protected string $order_id;
 
-    protected ?Currency $currency;
+    protected ?Currency $order_currency;
 
     protected ?string $comment;
 
@@ -29,7 +29,7 @@ class VoidPaymentRequestDTO extends DTO
             return $data;
         }
 
-        $data['currency'] = Currency::XTS->value;
+        $data['order_currency'] = Currency::XTS->value;
 
         return $data;
     }
@@ -44,9 +44,9 @@ class VoidPaymentRequestDTO extends DTO
         return $this->order_id;
     }
 
-    public function getCurrency(): ?Currency
+    public function getOrderCurrency(): ?Currency
     {
-        return $this->currency;
+        return $this->order_currency;
     }
 
     public function getComment(): ?string
