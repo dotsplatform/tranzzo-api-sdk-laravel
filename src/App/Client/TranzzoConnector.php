@@ -12,13 +12,16 @@ use Dots\Tranzzo\App\Client\Auth\TranzzoAuthenticator;
 use Dots\Tranzzo\App\Client\Exceptions\TranzzoException;
 use Dots\Tranzzo\App\Client\Requests\Payments\CreateHostedPaymentRequest;
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\CreateHostedPaymentRequestDTO;
+use Dots\Tranzzo\App\Client\Requests\Payments\DTO\PaymentOperationsRequestDTO;
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\ResendPaymentWebhookRequestDTO;
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\SplitCapturePaymentRequestDTO;
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\VoidPaymentRequestDTO;
+use Dots\Tranzzo\App\Client\Requests\Payments\PaymentOperationsRequest;
 use Dots\Tranzzo\App\Client\Requests\Payments\ResendPaymentWebhookRequest;
 use Dots\Tranzzo\App\Client\Requests\Payments\SplitCapturePaymentRequest;
 use Dots\Tranzzo\App\Client\Requests\Payments\VoidPaymentRequest;
 use Dots\Tranzzo\App\Client\Resources\Operation;
+use Dots\Tranzzo\App\Client\Resources\Operations;
 use Dots\Tranzzo\App\Client\Responses\CreateHostedPaymentResponseDTO;
 use Dots\Tranzzo\App\Client\Responses\ErrorResponseDTO;
 use RuntimeException;
@@ -74,6 +77,26 @@ class TranzzoConnector extends Connector
         $this->authenticateRequests();
 
         $this->send(new ResendPaymentWebhookRequest($dto));
+    }
+
+    /**
+     * @throws TranzzoException
+     */
+    public function getPaymentLastOperation(PaymentOperationsRequestDTO $dto): ?Operation
+    {
+        $this->authenticateRequests();
+
+        return $this->getPaymentOperations($dto)->getLastOperation();
+    }
+
+    /**
+     * @throws TranzzoException
+     */
+    public function getPaymentOperations(PaymentOperationsRequestDTO $dto): Operations
+    {
+        $this->authenticateRequests();
+
+        return $this->send(new PaymentOperationsRequest($dto))->dto();
     }
 
     protected function defaultHeaders(): array

@@ -15,7 +15,7 @@ use Dots\Tranzzo\App\Client\Resources\Consts\PaymentStatus;
 
 class Operation extends Entity
 {
-    protected string $operation_id;
+    protected ?string $operation_id;
 
     protected string $payment_id;
 
@@ -39,7 +39,7 @@ class Operation extends Entity
 
     protected string $status_description;
 
-    protected string $created_at;
+    protected TranzzoDateTime $created_at;
 
     protected string $processing_time;
 
@@ -47,7 +47,22 @@ class Operation extends Entity
 
     protected ?string $comment;
 
-    public function getOperationId(): string
+    public static function fromArray(array $data): static
+    {
+        $data['created_at'] = TranzzoDateTime::fromString($data['created_at']);
+
+        return parent::fromArray($data);
+    }
+
+    public function toArray(): array
+    {
+        $data = parent::toArray();
+        $data['created_at'] = $this->getCreatedAt()->__toString();
+
+        return $data;
+    }
+
+    public function getOperationId(): ?string
     {
         return $this->operation_id;
     }
@@ -107,7 +122,7 @@ class Operation extends Entity
         return $this->status_description;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): TranzzoDateTime
     {
         return $this->created_at;
     }
