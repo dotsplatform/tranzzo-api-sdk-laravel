@@ -11,7 +11,17 @@ use Dots\Data\DTO;
 
 class SplitMerchant extends DTO
 {
-    protected string $id;
+    protected string $sub_merchant_id;
 
     protected int $amount;
+
+    public function getSubMerchantId(): string
+    {
+        return $this->sub_merchant_id;
+    }
+
+    public function getAmount(): int
+    {
+        return $this->amount;
+    }
 }
