@@ -12,8 +12,10 @@ use Dots\Tranzzo\App\Client\Auth\TranzzoAuthenticator;
 use Dots\Tranzzo\App\Client\Exceptions\TranzzoException;
 use Dots\Tranzzo\App\Client\Requests\Payments\CreateHostedPaymentRequest;
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\CreateHostedPaymentRequestDTO;
+use Dots\Tranzzo\App\Client\Requests\Payments\DTO\ResendPaymentWebhookRequestDTO;
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\SplitCapturePaymentRequestDTO;
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\VoidPaymentRequestDTO;
+use Dots\Tranzzo\App\Client\Requests\Payments\ResendPaymentWebhookRequest;
 use Dots\Tranzzo\App\Client\Requests\Payments\SplitCapturePaymentRequest;
 use Dots\Tranzzo\App\Client\Requests\Payments\VoidPaymentRequest;
 use Dots\Tranzzo\App\Client\Resources\Operation;
@@ -62,6 +64,16 @@ class TranzzoConnector extends Connector
         $this->authenticateRequests();
 
         return $this->send(new VoidPaymentRequest($dto, $this->isStageEnv()))->dto();
+    }
+
+    /**
+     * @throws TranzzoException
+     */
+    public function resendPaymentWebhook(ResendPaymentWebhookRequestDTO $dto): void
+    {
+        $this->authenticateRequests();
+
+        $this->send(new ResendPaymentWebhookRequest($dto));
     }
 
     protected function defaultHeaders(): array

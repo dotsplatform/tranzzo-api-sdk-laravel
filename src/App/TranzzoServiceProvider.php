@@ -5,7 +5,7 @@
  * @author    Yehor Herasymchuk <yehor@dotsplatform.com>
  */
 
-namespace Dots\Tranzzo;
+namespace Dots\Tranzzo\App;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +14,7 @@ class TranzzoServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/tranzzo.php',
+            __DIR__.'/../../config/tranzzo.php',
             'tranzzo'
         );
     }
@@ -22,7 +22,7 @@ class TranzzoServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/tranzzo.php' => config_path('tranzzo.php'),
+            __DIR__.'/../../config/tranzzo.php' => config_path('tranzzo.php'),
         ], 'config');
     }
 }

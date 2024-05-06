@@ -33,7 +33,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Dots\\Tranzzo\\TranzzoServiceProvider"
+                "Dots\\Tranzzo\\App\\TranzzoServiceProvider"
             ]
         }
     },
