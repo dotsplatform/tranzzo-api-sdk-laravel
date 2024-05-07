@@ -142,23 +142,30 @@ class Operation extends Entity
         return $this->comment;
     }
 
-    public function isStatusSuccess(): bool
+    public function isOnHold(): bool
     {
-        return $this->status->isSuccess();
+        if (! $this->getMethod()->isAuth()) {
+            return false;
+        }
+
+        return $this->getStatus()->isSuccess();
     }
 
-    public function isStatusFailure(): bool
+    public function isCaptured(): bool
     {
-        return $this->status->isFailure();
+        if (! $this->getMethod()->isCapture()) {
+            return false;
+        }
+
+        return $this->getStatus()->isSuccess();
     }
 
-    public function isStatusPending(): bool
+    public function isVoided(): bool
     {
-        return $this->status->isPending();
-    }
+        if (! $this->getMethod()->isVoid()) {
+            return false;
+        }
 
-    public function isStatusInit(): bool
-    {
-        return $this->status->isInit();
+        return $this->getStatus()->isSuccess();
     }
 }

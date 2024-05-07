@@ -13,4 +13,24 @@ enum PaymentMethod: string
     case PURCHASE = 'purchase';
     case CAPTURE = 'capture';
     case VOID = 'void';
+
+    public function isAuth(): bool
+    {
+        return $this === self::AUTH;
+    }
+
+    public function isPurchase(): bool
+    {
+        return $this === self::PURCHASE;
+    }
+
+    public function isCapture(): bool
+    {
+        return $this === self::CAPTURE;
+    }
+
+    public function isVoid(): bool
+    {
+        return $this === self::VOID;
+    }
 }
