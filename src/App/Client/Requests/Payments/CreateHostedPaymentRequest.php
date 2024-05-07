@@ -32,6 +32,13 @@ class CreateHostedPaymentRequest extends PostTranzzoRequest
         return self::ENDPOINT;
     }
 
+    protected function defaultConfig(): array
+    {
+        return [
+            'allow_redirects' => false,
+        ];
+    }
+
     public function createDtoFromResponse(Response $response): CreateHostedPaymentResponseDTO
     {
         return CreateHostedPaymentResponseDTO::fromResponse($response);
