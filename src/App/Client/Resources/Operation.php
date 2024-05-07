@@ -41,7 +41,7 @@ class Operation extends Entity
 
     protected TranzzoDateTime $created_at;
 
-    protected string $processing_time;
+    protected ?string $processing_time;
 
     protected ?int $fee;
 
@@ -127,7 +127,7 @@ class Operation extends Entity
         return $this->created_at;
     }
 
-    public function getProcessingTime(): string
+    public function getProcessingTime(): ?string
     {
         return $this->processing_time;
     }
