@@ -11,15 +11,30 @@ class ErrorResponseDTO extends TranzzoResponseDTO
 {
     protected string $message;
 
-    protected array $args;
+    protected ?array $args;
+
+    protected ?array $details;
+
+    // usually code exists in args property
+    protected ?string $code;
 
     public function getMessage(): string
     {
         return $this->message;
     }
 
-    public function getArgs(): array
+    public function getArgs(): ?array
     {
         return $this->args;
+    }
+
+    public function getDetails(): ?array
+    {
+        return $this->details;
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
     }
 }
