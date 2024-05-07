@@ -29,7 +29,7 @@ class Operation extends Entity
 
     protected PaymentMethod $method;
 
-    protected int $amount;
+    protected float $amount;
 
     protected Currency $currency;
 
@@ -97,7 +97,7 @@ class Operation extends Entity
         return $this->method;
     }
 
-    public function getAmount(): int
+    public function getAmount(): float
     {
         return $this->amount;
     }

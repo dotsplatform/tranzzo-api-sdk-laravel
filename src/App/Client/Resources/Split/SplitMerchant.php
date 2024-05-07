@@ -13,14 +13,14 @@ class SplitMerchant extends DTO
 {
     protected string $sub_merchant_id;
 
-    protected int $amount;
+    protected float $amount;
 
     public function getSubMerchantId(): string
     {
         return $this->sub_merchant_id;
     }
 
-    public function getAmount(): int
+    public function getAmount(): float
     {
         return $this->amount;
     }

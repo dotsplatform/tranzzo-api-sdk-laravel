@@ -17,7 +17,7 @@ class SplitCapturePaymentRequestDTO extends DTO
 
     protected string $order_id;
 
-    protected ?int $charge_amount;
+    protected ?float $charge_amount;
 
     protected ?Currency $currency;
 
@@ -49,7 +49,7 @@ class SplitCapturePaymentRequestDTO extends DTO
         return $this->order_id;
     }
 
-    public function getChargeAmount(): ?int
+    public function getChargeAmount(): ?float
     {
         return $this->charge_amount;
     }

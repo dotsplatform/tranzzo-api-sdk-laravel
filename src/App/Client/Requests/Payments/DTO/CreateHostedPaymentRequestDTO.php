@@ -21,7 +21,7 @@ class CreateHostedPaymentRequestDTO extends DTO
 
     protected PaymentMethod $method;
 
-    protected int $amount;
+    protected float $amount;
 
     protected Currency $currency;
 
@@ -66,7 +66,7 @@ class CreateHostedPaymentRequestDTO extends DTO
         return $this->method;
     }
 
-    public function getAmount(): int
+    public function getAmount(): float
     {
         return $this->amount;
     }
