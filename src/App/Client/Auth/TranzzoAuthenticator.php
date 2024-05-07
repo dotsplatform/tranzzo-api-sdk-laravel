@@ -13,9 +13,9 @@ use Saloon\Http\PendingRequest;
 
 class TranzzoAuthenticator implements Authenticator
 {
-    public const API_AUTH_HEADER = 'X-Api-Auth';
+    public const API_AUTH_HEADER = 'X-API-AUTH';
 
-    public const API_KEY_HEADER = 'X-Api-Token';
+    public const API_KEY_HEADER = 'X-API-KEY';
 
     public function __construct(
         private readonly TranzzoAuthDTO $authDTO,
