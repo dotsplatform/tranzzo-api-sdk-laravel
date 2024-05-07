@@ -21,7 +21,7 @@ class Operation extends Entity
 
     protected string $order_id;
 
-    protected string $transaction_id;
+    protected ?string $transaction_id;
 
     protected string $pos_id;
 
@@ -77,7 +77,7 @@ class Operation extends Entity
         return $this->order_id;
     }
 
-    public function getTransactionId(): string
+    public function getTransactionId(): ?string
     {
         return $this->transaction_id;
     }
