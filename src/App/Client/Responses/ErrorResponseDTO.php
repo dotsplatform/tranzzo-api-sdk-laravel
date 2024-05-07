@@ -9,17 +9,17 @@ namespace Dots\Tranzzo\App\Client\Responses;
 
 class ErrorResponseDTO extends TranzzoResponseDTO
 {
-    protected string $errCode;
+    protected string $message;
 
-    protected string $errText;
+    protected array $args;
 
-    public function getErrCode(): string
+    public function getMessage(): string
     {
-        return $this->errCode;
+        return $this->message;
     }
 
-    public function getErrText(): string
+    public function getArgs(): array
     {
-        return $this->errText;
+        return $this->args;
     }
 }
