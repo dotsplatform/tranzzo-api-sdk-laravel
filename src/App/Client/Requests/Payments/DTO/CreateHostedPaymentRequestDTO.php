@@ -39,10 +39,10 @@ class CreateHostedPaymentRequestDTO extends DTO
 
     protected ?string $customer_referrer;
 
-    public function toRequestData(bool $stageEnv): array
+    public function toRequestData(bool $testMode): array
     {
         $data = $this->toArray();
-        if (! $stageEnv) {
+        if (! $testMode) {
             return $data;
         }
 

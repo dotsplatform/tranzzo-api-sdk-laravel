@@ -18,13 +18,13 @@ class SplitCapturePaymentRequest extends PostTranzzoRequest
 
     public function __construct(
         private readonly SplitCapturePaymentRequestDTO $dto,
-        private readonly bool $stageEnv,
+        private readonly bool $testMode,
     ) {
     }
 
     protected function defaultBody(): array
     {
-        return $this->dto->toRequestData($this->stageEnv);
+        return $this->dto->toRequestData($this->testMode);
     }
 
     public function resolveEndpoint(): string

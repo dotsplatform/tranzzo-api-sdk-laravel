@@ -36,6 +36,7 @@ class TranzzoConnector extends Connector
 
     public function __construct(
         private readonly TranzzoAuthDTO $authDto,
+        private readonly bool $testMode = false,
     ) {
     }
 
@@ -46,7 +47,7 @@ class TranzzoConnector extends Connector
     {
         $this->authenticateRequests();
 
-        return $this->send(new CreateHostedPaymentRequest($dto, $this->isStageEnv()))->dto();
+        return $this->send(new CreateHostedPaymentRequest($dto, $this->isTestMode()))->dto();
     }
 
     /**
@@ -56,7 +57,7 @@ class TranzzoConnector extends Connector
     {
         $this->authenticateRequests();
 
-        return $this->send(new SplitCapturePaymentRequest($dto, $this->isStageEnv()))->dto();
+        return $this->send(new SplitCapturePaymentRequest($dto, $this->isTestMode()))->dto();
     }
 
     /**
@@ -66,7 +67,7 @@ class TranzzoConnector extends Connector
     {
         $this->authenticateRequests();
 
-        return $this->send(new VoidPaymentRequest($dto, $this->isStageEnv()))->dto();
+        return $this->send(new VoidPaymentRequest($dto, $this->isTestMode()))->dto();
     }
 
     /**
@@ -117,9 +118,9 @@ class TranzzoConnector extends Connector
         return $host;
     }
 
-    private function isStageEnv(): bool
+    private function isTestMode(): bool
     {
-        return config('tranzzo.hosts.stageEnv');
+        return $this->testMode;
     }
 
     private function authenticateRequests(): void

@@ -18,13 +18,13 @@ class CreateHostedPaymentRequest extends PostTranzzoRequest
 
     public function __construct(
         private readonly CreateHostedPaymentRequestDTO $dto,
-        private readonly bool $stageEnv,
+        private readonly bool $testMode,
     ) {
     }
 
     protected function defaultBody(): array
     {
-        return $this->dto->toRequestData($this->stageEnv);
+        return $this->dto->toRequestData($this->testMode);
     }
 
     public function resolveEndpoint(): string

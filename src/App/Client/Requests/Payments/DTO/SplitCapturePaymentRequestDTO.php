@@ -27,10 +27,10 @@ class SplitCapturePaymentRequestDTO extends DTO
 
     protected SplitMerchants $split;
 
-    public function toRequestData(bool $stageEnv): array
+    public function toRequestData(bool $testMode): array
     {
         $data = $this->toArray();
-        if (! $stageEnv) {
+        if (! $testMode) {
             return $data;
         }
 
