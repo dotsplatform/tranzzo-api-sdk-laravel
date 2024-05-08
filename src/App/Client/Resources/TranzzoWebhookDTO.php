@@ -17,7 +17,7 @@ class TranzzoWebhookDTO extends DTO
 
     public function getDecodedData(): array
     {
-        $data = base64_decode($this->getData());
+        $data = base64_decode(strtr($this->getData(), '-_', '+/'));
         if (! $data) {
             return [];
         }
