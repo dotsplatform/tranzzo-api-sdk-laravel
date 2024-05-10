@@ -31,16 +31,6 @@ class TranzzoPaymentsResponseMocker
         return $dto;
     }
 
-    public static function mockFailCreatePayment(array $data = []): array
-    {
-        $data = TranzzoResponseDemoDataGenerator::generateBadRequestResponse($data);
-        MockClient::global([
-            CreateHostedPaymentRequest::class => MockResponse::make($data, 400),
-        ]);
-
-        return $data;
-    }
-
     public static function mockSuccessPaymentOperations(array $data = []): Operations
     {
         $dto = TranzzoResponseDemoDataGenerator::generateOperations($data);
@@ -76,5 +66,35 @@ class TranzzoPaymentsResponseMocker
         ]);
 
         return $dto;
+    }
+
+    public static function mockFailCreatePayment(array $data = []): array
+    {
+        $data = TranzzoResponseDemoDataGenerator::generateBadRequestResponse($data);
+        MockClient::global([
+            CreateHostedPaymentRequest::class => MockResponse::make($data, 400),
+        ]);
+
+        return $data;
+    }
+
+    public static function mockFailSplitCapturePayment(array $data = []): array
+    {
+        $data = TranzzoResponseDemoDataGenerator::generateBadRequestResponse($data);
+        MockClient::global([
+            SplitCapturePaymentRequest::class => MockResponse::make($data, 400),
+        ]);
+
+        return $data;
+    }
+
+    public static function mockFailVoidPayment(array $data = []): array
+    {
+        $data = TranzzoResponseDemoDataGenerator::generateBadRequestResponse($data);
+        MockClient::global([
+            VoidPaymentRequest::class => MockResponse::make($data, 400),
+        ]);
+
+        return $data;
     }
 }
