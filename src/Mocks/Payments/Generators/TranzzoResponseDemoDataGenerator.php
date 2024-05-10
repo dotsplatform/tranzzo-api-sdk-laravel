@@ -50,9 +50,7 @@ class TranzzoResponseDemoDataGenerator
             $operations[] = self::generateOperation($lastOperationData);
         }
 
-        return Operations::fromArray([
-            'operations' => $operations,
-        ]);
+        return Operations::make($operations);
     }
 
     public static function generateHold(array $data = []): Operation

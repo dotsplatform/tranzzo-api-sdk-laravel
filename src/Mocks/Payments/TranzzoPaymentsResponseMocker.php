@@ -24,8 +24,11 @@ class TranzzoPaymentsResponseMocker
     public static function mockSuccessCreatePayment(array $data = []): CreateHostedPaymentResponseDTO
     {
         $dto = TranzzoResponseDemoDataGenerator::generateSuccessCreatePaymentResponse($data);
+        $headers = [
+            'location' => $dto->getUrl(),
+        ];
         MockClient::global([
-            CreateHostedPaymentRequest::class => MockResponse::make($dto->toArray()),
+            CreateHostedPaymentRequest::class => MockResponse::make([], 302, $headers),
         ]);
 
         return $dto;
