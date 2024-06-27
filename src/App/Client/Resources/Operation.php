@@ -23,7 +23,7 @@ class Operation extends Entity
 
     protected ?string $transaction_id;
 
-    protected string $pos_id;
+    protected ?string $pos_id;
 
     protected PaymentMode $mode;
 
@@ -35,9 +35,9 @@ class Operation extends Entity
 
     protected PaymentStatus $status;
 
-    protected string $status_code;
+    protected ?string $status_code;
 
-    protected string $status_description;
+    protected ?string $status_description;
 
     protected TranzzoDateTime $created_at;
 
@@ -82,7 +82,7 @@ class Operation extends Entity
         return $this->transaction_id;
     }
 
-    public function getPosId(): string
+    public function getPosId(): ?string
     {
         return $this->pos_id;
     }
@@ -112,12 +112,12 @@ class Operation extends Entity
         return $this->status;
     }
 
-    public function getStatusCode(): string
+    public function getStatusCode(): ?string
     {
         return $this->status_code;
     }
 
-    public function getStatusDescription(): string
+    public function getStatusDescription(): ?string
     {
         return $this->status_description;
     }
