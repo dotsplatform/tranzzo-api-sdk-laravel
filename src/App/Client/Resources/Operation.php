@@ -43,8 +43,6 @@ class Operation extends Entity
 
     protected ?string $processing_time;
 
-    protected ?int $fee;
-
     protected ?string $comment;
 
     public static function fromArray(array $data): static
@@ -130,11 +128,6 @@ class Operation extends Entity
     public function getProcessingTime(): ?string
     {
         return $this->processing_time;
-    }
-
-    public function getFee(): ?int
-    {
-        return $this->fee;
     }
 
     public function getComment(): ?string

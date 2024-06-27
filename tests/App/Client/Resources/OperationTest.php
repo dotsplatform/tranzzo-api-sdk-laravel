@@ -34,7 +34,6 @@ class OperationTest extends TestCase
             'status_description' => $this->uuid(),
             'created_at' => TranzzoDateTime::fromTimestamp(time())->__toString(),
             'processing_time' => $this->uuid(),
-            'fee' => 100,
             'comment' => $this->uuid(),
         ]);
 
@@ -74,7 +73,6 @@ class OperationTest extends TestCase
                     'status_description' => 'status_description',
                     'created_at' => TranzzoDateTime::fromTimestamp(time()),
                     'processing_time' => 'processing_time',
-                    'fee' => 100,
                     'comment' => 'comment',
                 ],
                 'expectedData' => [
@@ -92,7 +90,6 @@ class OperationTest extends TestCase
                     'status_description' => 'status_description',
                     'created_at' => TranzzoDateTime::fromTimestamp(time())->__toString(),
                     'processing_time' => 'processing_time',
-                    'fee' => 100,
                     'comment' => 'comment',
                 ],
             ],
@@ -114,7 +111,6 @@ class OperationTest extends TestCase
                 'expectedData' => [
                     'operation_id' => null,
                     'processing_time' => null,
-                    'fee' => null,
                     'comment' => null,
                 ],
             ],
@@ -316,7 +312,6 @@ class OperationTest extends TestCase
             'status_description' => 'status_description',
             'created_at' => TranzzoDateTime::fromTimestamp(time()),
             'processing_time' => 'processing_time',
-            'fee' => 100,
             'comment' => 'comment',
         ], $data);
     }
