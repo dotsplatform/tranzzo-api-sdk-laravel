@@ -87,7 +87,7 @@ class TranzzoConnector extends Connector
     {
         $this->authenticateRequests();
 
-        return $this->getPaymentOperations($dto)->getLastOperation();
+        return $this->getPaymentOperations($dto)->getLastSuccessOperation();
     }
 
     /**
