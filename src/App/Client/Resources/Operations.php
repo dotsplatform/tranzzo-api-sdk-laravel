@@ -23,27 +23,6 @@ class Operations extends Collection implements FromArrayable
         ));
     }
 
-    public function hasSuccessHold(): bool
-    {
-        return (bool) $this->first(
-            fn (Operation $operation) => $operation->isOnHold(),
-        );
-    }
-
-    public function hasSuccessCapture(): bool
-    {
-        return (bool) $this->first(
-            fn (Operation $operation) => $operation->isCaptured(),
-        );
-    }
-
-    public function hasSuccessVoid(): bool
-    {
-        return (bool) $this->first(
-            fn (Operation $operation) => $operation->isVoided(),
-        );
-    }
-
     public function getLastSuccessOperation(): ?Operation
     {
         return $this->filter(

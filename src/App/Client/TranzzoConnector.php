@@ -83,7 +83,7 @@ class TranzzoConnector extends Connector
     /**
      * @throws TranzzoException
      */
-    public function getPaymentLastOperation(PaymentOperationsRequestDTO $dto): ?Operation
+    public function getPaymentLastSuccessOperation(PaymentOperationsRequestDTO $dto): ?Operation
     {
         $this->authenticateRequests();
 
