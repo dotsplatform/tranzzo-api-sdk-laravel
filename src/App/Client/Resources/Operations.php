@@ -23,9 +23,11 @@ class Operations extends Collection implements FromArrayable
         ));
     }
 
-    public function getLastOperation(): ?Operation
+    public function getLastSuccessOperation(): ?Operation
     {
-        return $this->sortBy(
+        return $this->filter(
+            fn (Operation $operation) => $operation->isStatusSuccess(),
+        )->sortBy(
             fn (Operation $operation) => $operation->getCreatedAt(),
         )->last();
     }

@@ -161,4 +161,9 @@ class Operation extends Entity
 
         return $this->getStatus()->isSuccess();
     }
+
+    public function isStatusSuccess(): bool
+    {
+        return $this->getStatus()->isSuccess();
+    }
 }
