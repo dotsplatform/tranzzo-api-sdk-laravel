@@ -9,6 +9,7 @@ namespace Tests\App\Client\Requests\Payments\DTO;
 
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\VoidPaymentRequestDTO;
 use Dots\Tranzzo\App\Client\Resources\Consts\Currency;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class VoidPaymentRequestDTOTest extends TestCase
@@ -29,9 +30,7 @@ class VoidPaymentRequestDTOTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,
@@ -73,9 +72,7 @@ class VoidPaymentRequestDTOTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider methodsProvider
-     */
+    #[DataProvider('methodsProvider')]
     public function testMethods(
         string $method,
         array $methodData,

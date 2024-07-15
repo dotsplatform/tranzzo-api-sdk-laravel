@@ -8,6 +8,7 @@
 namespace Tests\App\Client\Auth\DTO;
 
 use Dots\Tranzzo\App\Client\Auth\DTO\TranzzoAuthDTO;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class TranzzoAuthDTOTest extends TestCase
@@ -27,9 +28,7 @@ class TranzzoAuthDTOTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,

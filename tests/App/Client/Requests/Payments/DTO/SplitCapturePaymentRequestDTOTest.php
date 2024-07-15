@@ -10,6 +10,7 @@ namespace Tests\App\Client\Requests\Payments\DTO;
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\SplitCapturePaymentRequestDTO;
 use Dots\Tranzzo\App\Client\Resources\Consts\Currency;
 use Dots\Tranzzo\App\Client\Resources\Split\SplitMerchants;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class SplitCapturePaymentRequestDTOTest extends TestCase
@@ -37,9 +38,7 @@ class SplitCapturePaymentRequestDTOTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,
@@ -102,9 +101,7 @@ class SplitCapturePaymentRequestDTOTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider methodsProvider
-     */
+    #[DataProvider('methodsProvider')]
     public function testMethods(
         string $method,
         array $methodData,

@@ -9,6 +9,7 @@ namespace Tests\App\Client\Resources;
 
 use DateTime;
 use Dots\Tranzzo\App\Client\Resources\TranzzoDateTime;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class TranzzoDateTimeTest extends TestCase
@@ -34,9 +35,7 @@ class TranzzoDateTimeTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider getProvideTranzzoDateTimeTestData
-     */
+    #[DataProvider('getProvideTranzzoDateTimeTestData')]
     public function testTranzzoDateTime(string $inputDate, string $expectedDateString, int $expectedTimestamp): void
     {
         $tranzzoDateTime = TranzzoDateTime::fromString($inputDate);
@@ -45,9 +44,7 @@ class TranzzoDateTimeTest extends TestCase
         $this->assertEquals($expectedTimestamp, $tranzzoDateTime->getTimestamp());
     }
 
-    /**
-     * @dataProvider getProvideTranzzoDateTimeFromTimestampTestData
-     */
+    #[DataProvider('getProvideTranzzoDateTimeFromTimestampTestData')]
     public function testTranzzoDateTimeFromTimestamp(int $timestamp, string $expectedDateString): void
     {
         $tranzzoDateTime = TranzzoDateTime::fromTimestamp($timestamp);

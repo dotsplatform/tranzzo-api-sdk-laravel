@@ -8,6 +8,7 @@
 namespace Tests\App\Client\Responses;
 
 use Dots\Tranzzo\App\Client\Responses\CreateHostedPaymentResponseDTO;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class CreateHostedPaymentResponseDTOTest extends TestCase
@@ -24,9 +25,7 @@ class CreateHostedPaymentResponseDTOTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,

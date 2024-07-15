@@ -8,6 +8,7 @@
 namespace Tests\App\Client\Responses;
 
 use Dots\Tranzzo\App\Client\Responses\ErrorResponseDTO;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class ErrorResponseDTOTest extends TestCase
@@ -27,9 +28,7 @@ class ErrorResponseDTOTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,

@@ -12,6 +12,7 @@ use Dots\Tranzzo\App\Client\Resources\Consts\Currency;
 use Dots\Tranzzo\App\Client\Resources\Consts\Order3DSBypass;
 use Dots\Tranzzo\App\Client\Resources\Consts\PaymentMethod;
 use Dots\Tranzzo\App\Client\Resources\Consts\PaymentMode;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class CreateHostedPaymentRequestDTOTest extends TestCase
@@ -39,9 +40,7 @@ class CreateHostedPaymentRequestDTOTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,
@@ -104,9 +103,7 @@ class CreateHostedPaymentRequestDTOTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider methodsProvider
-     */
+    #[DataProvider('methodsProvider')]
     public function testMethods(
         string $method,
         array $methodData,

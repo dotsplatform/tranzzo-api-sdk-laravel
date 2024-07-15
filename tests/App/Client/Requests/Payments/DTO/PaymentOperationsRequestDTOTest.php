@@ -8,6 +8,7 @@
 namespace Tests\App\Client\Requests\Payments\DTO;
 
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\PaymentOperationsRequestDTO;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class PaymentOperationsRequestDTOTest extends TestCase
@@ -25,9 +26,7 @@ class PaymentOperationsRequestDTOTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,
