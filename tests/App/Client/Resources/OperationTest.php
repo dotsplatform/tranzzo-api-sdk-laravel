@@ -13,6 +13,7 @@ use Dots\Tranzzo\App\Client\Resources\Consts\PaymentMode;
 use Dots\Tranzzo\App\Client\Resources\Consts\PaymentStatus;
 use Dots\Tranzzo\App\Client\Resources\Operation;
 use Dots\Tranzzo\App\Client\Resources\TranzzoDateTime;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class OperationTest extends TestCase
@@ -43,9 +44,7 @@ class OperationTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,
@@ -117,9 +116,7 @@ class OperationTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider methodsProvider
-     */
+    #[DataProvider('methodsProvider')]
     public function testMethods(
         string $method,
         array $methodData,

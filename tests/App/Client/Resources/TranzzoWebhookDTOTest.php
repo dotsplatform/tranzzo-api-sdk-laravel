@@ -8,6 +8,7 @@
 namespace Tests\App\Client\Resources;
 
 use Dots\Tranzzo\App\Client\Resources\TranzzoWebhookDTO;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class TranzzoWebhookDTOTest extends TestCase
@@ -25,9 +26,7 @@ class TranzzoWebhookDTOTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,
@@ -52,9 +51,7 @@ class TranzzoWebhookDTOTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider methodsProvider
-     */
+    #[DataProvider('methodsProvider')]
     public function testMethods(
         string $method,
         array $methodData,

@@ -8,6 +8,7 @@
 namespace Tests\App\Client\Requests\Payments\DTO;
 
 use Dots\Tranzzo\App\Client\Requests\Payments\DTO\ResendPaymentWebhookRequestDTO;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class ResendPaymentWebhookRequestDTOTest extends TestCase
@@ -27,9 +28,7 @@ class ResendPaymentWebhookRequestDTOTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,

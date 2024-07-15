@@ -8,6 +8,7 @@
 namespace Tests\App\Client\Resources\Split;
 
 use Dots\Tranzzo\App\Client\Resources\Split\SplitMerchant;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class SplitMerchantTest extends TestCase
@@ -25,9 +26,7 @@ class SplitMerchantTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider fromArrayDataProvider
-     */
+    #[DataProvider('fromArrayDataProvider')]
     public function testFromArray(
         array $data,
         array $expectedData,
